@@ -12,7 +12,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace BerberYonetim.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20241216175911_InitialCreate")]
+    [Migration("20241218111332_InitialCreate")]
     partial class InitialCreate
     {
         /// <inheritdoc />
