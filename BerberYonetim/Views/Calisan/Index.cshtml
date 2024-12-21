@@ -1,0 +1,30 @@
+﻿@model IEnumerable<BerberYonetim.Models.Calisan>
+
+<h1>Çalışan Listesi</h1>
+<a asp-action="Create" class="btn btn-primary">Yeni Çalışan Ekle</a>
+<table class="table">
+    <thead>
+        <tr>
+            <th>Ad</th>
+            <th>Soyad</th>
+            <th>Uzmanlık</th>
+            <th>Müsaitlik</th>
+            <th>İşlemler</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.Ad</td>
+                <td>@item.Soyad</td>
+                <td>@item.Uzmanlik</td>
+                <td>@item.Musaitlik</td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.Id" class="btn btn-warning">Düzenle</a>
+                    <a asp-action="Delete" asp-route-id="@item.Id" class="btn btn-danger">Sil</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

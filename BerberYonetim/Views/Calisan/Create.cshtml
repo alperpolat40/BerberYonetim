@@ -1,0 +1,22 @@
+﻿@model BerberYonetim.Models.Calisan
+
+<h1>Yeni Çalışan Ekle</h1>
+<form asp-action="Create" method="post">
+    <div class="form-group">
+        <label for="Ad">Ad</label>
+        <input asp-for="Ad" class="form-control" />
+    </div>
+    <div class="form-group">
+        <label for="Soyad">Soyad</label>
+        <input asp-for="Soyad" class="form-control" />
+    </div>
+    <div class="form-group">
+        <label for="Uzmanlik">Uzmanlık</label>
+        <input asp-for="Uzmanlik" class="form-control" />
+    </div>
+    <div class="form-group">
+        <label for="Musaitlik">Müsaitlik</label>
+        <input asp-for="Musaitlik" type="checkbox" class="form-check-input" />
+    </div>
+    <button type="submit" class="btn btn-success">Kaydet</button>
+</form>

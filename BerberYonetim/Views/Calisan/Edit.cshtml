@@ -1,0 +1,20 @@
+﻿p-validation-for="Ad" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label for="Soyad">Soyad</label>
+        <input asp-for="Soyad" class="form-control" />
+        <span asp-validation-for="Soyad" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label for="Uzmanlik">Uzmanlık</label>
+        <input asp-for="Uzmanlik" class="form-control" />
+        <span asp-validation-for="Uzmanlik" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label for="Musaitlik">Müsaitlik</label>
+        <input asp-for="Musaitlik" type="checkbox" class="form-check-input" />
+        <span asp-validation-for="Musaitlik" class="text-danger"></span>
+    </div>
+    <button type="submit" class="btn btn-success">Kaydet</button>
+    <a asp-action="Index" class="btn btn-secondary">İptal</a>
+</form>
