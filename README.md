@@ -5,3 +5,4 @@
 4.commti:Admin paneli oluşturuldu: Rol ve kullanıcı yönetimi tamamlandı.
 5.commit : Yeni çalışan ekleme işlemi için Create.cshtml görünümü
 düzenleme işlemi için Edit.cshtml ve ilgili metodlar eklendi.
+6.commit: projede bir tıkanmadan ötürü yıkıma gitmeyi tercih ettik. yeni projemiz !! Berber Klasörü altında !!
