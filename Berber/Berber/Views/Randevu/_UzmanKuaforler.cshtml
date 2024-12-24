@@ -1,0 +1,31 @@
+﻿@model IEnumerable<BerberYonetim.Models.Kuafor>
+
+<h3>Uzman Kuaförler</h3>
+<div class="form-group">
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Seç</th>
+                <th>Ad</th>
+                <th>Telefon</th>
+                <th>Çalışma Saatleri</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var kuafor in Model)
+            {
+                <tr>
+                    <td>
+                        <!-- Kuaför seçimi için radio button -->
+                        <input type="radio" name="KuaforId" value="@kuafor.Id" id="kuafor-@kuafor.Id" class="form-check-input" />
+                    </td>
+                    <td>
+                        <label for="kuafor-@kuafor.Id" class="form-check-label">@kuafor.Ad</label>
+                    </td>
+                    <td>@kuafor.Telefon</td>
+                    <td>@kuafor.CalismaSaatleri</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
