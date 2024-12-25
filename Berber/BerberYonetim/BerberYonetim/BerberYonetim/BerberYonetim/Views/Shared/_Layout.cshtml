@@ -23,7 +23,16 @@
                         </li>
                     </ul>
                     <ul class="navbar-nav">
-                        @if (Context.Session.GetString("KullaniciAdi") != null)
+                        @if (Context.Session.GetString("Admin") == "true")
+                        {
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-area="" asp-controller="Admin" asp-action="Panel">Admin Paneli</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-area="" asp-controller="Admin" asp-action="Cikis">Admin Çıkış</a>
+                            </li>
+                        }
+                        else if (Context.Session.GetString("KullaniciAdi") != null)
                         {
                             <li class="nav-item">
                                 <a class="nav-link text-dark" asp-area="" asp-controller="Randevu" asp-action="Randevularim">Randevularım</a>
