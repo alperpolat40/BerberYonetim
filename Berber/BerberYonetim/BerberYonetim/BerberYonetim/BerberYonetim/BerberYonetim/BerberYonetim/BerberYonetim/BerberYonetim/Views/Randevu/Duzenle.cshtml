@@ -1,0 +1,56 @@
+﻿@model BerberYonetim.Models.Randevu
+
+@{
+    ViewData["Title"] = "Randevu Düzenle";
+}
+
+<h2>Randevu Düzenle</h2>
+
+@if (ViewData.ModelState.ErrorCount > 0)
+{
+    <div class="alert alert-danger">
+        @foreach (var error in ViewData.ModelState.Values.SelectMany(v => v.Errors))
+        {
+            <p>@error.ErrorMessage</p>
+        }
+    </div>
+}
+
+<form asp-action="Duzenle" method="post">
+    <input type="hidden" asp-for="Id" />
+    <div class="form-group">
+        <label for="IslemId">İşlem</label>
+        <select asp-for="IslemId" class="form-control" asp-items="ViewBag.Islemler">
+            <option value="">İşlem Seçiniz</option>
+        </select>
+        <span asp-validation-for="IslemId" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label for="Tarih">Randevu Tarihi</label>
+        <input asp-for="Tarih" type="date" class="form-control" />
+        <span asp-validation-for="Tarih" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label for="Saat">Randevu Saati</label>
+        <select asp-for="Saat" class="form-control">
+            <option value="">Saat Seçiniz</option>
+            @foreach (var saat in ViewBag.Saatler)
+            {
+                @if (Model.Saat == saat)
+                {
+                    <option value="@saat" selected>@saat</option>
+                }
+                else
+                {
+                    <option value="@saat">@saat</option>
+                }
+            }
+        </select>
+        <span asp-validation-for="Saat" class="text-danger"></span>
+    </div>
+
+    <button type="submit" class="btn btn-primary">Güncelle</button>
+    <a asp-action="Randevularim" class="btn btn-secondary">Geri Dön</a>
+</form>

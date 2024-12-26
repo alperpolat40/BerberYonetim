@@ -1,0 +1,29 @@
+﻿@model BerberYonetim.Models.Kuafor
+
+<h2>Kuaför Ekle</h2>
+
+<form asp-action="KuaforEkle" method="post">
+    <div class="form-group">
+        <label for="Ad">Ad</label>
+        <input asp-for="Ad" class="form-control" />
+        <span asp-validation-for="Ad" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label for="Telefon">Telefon</label>
+        <input asp-for="Telefon" class="form-control" />
+        <span asp-validation-for="Telefon" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label for="CalismaSaatleri">Çalışma Saatleri</label>
+        <input asp-for="CalismaSaatleri" class="form-control" />
+        <span asp-validation-for="CalismaSaatleri" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label for="Uzmanliklar">Uzmanlık Alanları</label>
+        <select asp-for="Uzmanliklar" asp-items="ViewBag.Islemler" class="form-control" multiple>
+        </select>
+        <span asp-validation-for="Uzmanliklar" class="text-danger"></span>
+    </div>
+    <button type="submit" class="btn btn-primary">Ekle</button>
+    <a asp-action="KuaforYonetimi" class="btn btn-secondary">Geri Dön</a>
+</form>

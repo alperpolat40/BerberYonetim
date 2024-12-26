@@ -1,0 +1,23 @@
+﻿@model BerberYonetim.Models.Islem
+
+<h2>İşlem Ekle</h2>
+
+<form asp-action="IslemEkle" method="post">
+    <div class="form-group">
+        <label for="Ad">Ad</label>
+        <input asp-for="Ad" class="form-control" />
+        <span asp-validation-for="Ad" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label for="Sure">Süre (Dakika)</label>
+        <input asp-for="Sure" class="form-control" />
+        <span asp-validation-for="Sure" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label for="Ucret">Ücret</label>
+        <input asp-for="Ucret" class="form-control" />
+        <span asp-validation-for="Ucret" class="text-danger"></span>
+    </div>
+    <button type="submit" class="btn btn-primary">Ekle</button>
+    <a asp-action="IslemYonetimi" class="btn btn-secondary">Geri Dön</a>
+</form>

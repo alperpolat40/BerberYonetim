@@ -1,0 +1,41 @@
+﻿@model IEnumerable<BerberYonetim.Models.Randevu>
+
+@{
+    ViewData["Title"] = "Randevularım";
+}
+
+<h2>Randevularım</h2>
+
+@if (!Model.Any())
+{
+    <div class="alert alert-info">Henüz bir randevu almadınız.</div>
+}
+else
+{
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th>İşlem</th>
+                <th>Kuaför</th>
+                <th>Tarih</th>
+                <th>Saat</th>
+                <th>İşlemler</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var randevu in Model)
+            {
+                <tr>
+                    <td>@randevu.Islem.Ad</td>
+                    <td>@randevu.Kuafor.Ad</td>
+                    <td>@randevu.Tarih.ToShortDateString()</td>
+                    <td>@randevu.Saat</td>
+                    <td>
+                        <a asp-action="Sil" asp-route-id="@randevu.Id" class="btn btn-danger btn-sm">İptal Et</a>
+                        
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}

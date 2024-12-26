@@ -1,0 +1,32 @@
+﻿@model BerberYonetim.Models.Kullanici
+
+<div class="form-container">
+    <h2 class="text-warning text-center mb-4">Üye Ol</h2>
+
+    @if (TempData["UyeOlundu"] != null)
+    {
+        <div class="alert alert-success alert-dismissible fade show mt-3" role="alert">
+            @TempData["UyeOlundu"]
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+    }
+
+    <form asp-action="UyeOl" method="post" class="form-box">
+        <div class="form-group mb-3">
+            <label for="AdSoyad" class="text-warning">Ad Soyad</label>
+            <input asp-for="AdSoyad" class="form-control form-control-lg border-warning" placeholder="Ad ve Soyadınızı girin" />
+            <span asp-validation-for="AdSoyad" class="text-danger"></span>
+        </div>
+        <div class="form-group mb-3">
+            <label for="Email" class="text-warning">E-posta</label>
+            <input asp-for="Email" class="form-control form-control-lg border-warning" placeholder="E-posta adresinizi girin" />
+            <span asp-validation-for="Email" class="text-danger"></span>
+        </div>
+        <div class="form-group mb-3">
+            <label for="Sifre" class="text-warning">Şifre</label>
+            <input asp-for="Sifre" type="password" class="form-control form-control-lg border-warning" placeholder="Şifrenizi girin" />
+            <span asp-validation-for="Sifre" class="text-danger"></span>
+        </div>
+        <button type="submit" class="btn btn-warning btn-lg w-100">Üye Ol</button>
+    </form>
+</div>
