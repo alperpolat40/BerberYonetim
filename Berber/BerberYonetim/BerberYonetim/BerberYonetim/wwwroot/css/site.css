@@ -1,0 +1,245 @@
+html {
+  font-size: 14px;
+}
+
+@media (min-width: 768px) {
+  html {
+    font-size: 16px;
+  }
+}
+
+.btn:focus, .btn:active:focus, .btn-link.nav-link:focus, .form-control:focus, .form-check-input:focus {
+  box-shadow: 0 0 0 0.1rem white, 0 0 0 0.25rem #258cfb;
+}
+
+html {
+  position: relative;
+  min-height: 100%;
+}
+body {
+    margin: 0;
+    padding: 0;
+    background: url('/images/background.jpg') no-repeat center center fixed;
+    background-size: cover;
+    height: 100vh; /* Tüm ekraný kaplamasý için */
+    width: 100vw; /* Tüm geniþliði kaplamasý için */
+    overflow: hidden; /* Kaydýrma çubuklarýný gizler */
+}
+
+
+h1, p {
+    color: white !important;
+    text-shadow: 1px 1px 3px black;
+}
+
+
+.navbar {
+    background-color: black !important;
+    color: gold !important;
+}
+
+    .navbar .nav-link {
+        color: gold !important;
+    }
+
+.navbar-brand {
+    color: gold !important;
+}
+
+.navbar .nav-link:hover {
+    color: white !important;
+}
+
+.navbar .navbar-brand:hover {
+    color: white !important;
+}
+/* Üye Ol Sayfasý Yazý Renkleri */
+h2 {
+    color: #FFD700; /* Baþlýk rengini belirgin bir altýn rengi yapar */
+    font-weight: bold;
+}
+
+form label {
+    color: #FFFFFF; /* Etiketlerin rengini beyaz yapar */
+    font-size: 1.2rem; /* Yazý boyutunu artýrýr */
+}
+
+form .form-control {
+    background-color: rgba(255, 255, 255, 0.8); /* Arka plan rengini hafif þeffaf yapar */
+    color: #000; /* Yazý rengini siyah yapar */
+    border: 2px solid #FFD700; /* Kenarlýðý belirgin altýn rengi yapar */
+}
+
+form .btn-primary {
+    background-color: #FFD700; /* Buton rengini altýn yapar */
+    color: #000; /* Buton üzerindeki yazýyý siyah yapar */
+    border: none;
+}
+
+    form .btn-primary:hover {
+        background-color: #FFC107; /* Hover durumunda rengi deðiþtirir */
+        color: #fff;
+    }
+    /* Formun ortalanmasý için genel düzen */
+.form-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background: transparent;
+}
+
+.form-box {
+    background: rgba(0, 0, 0, 0.7);
+    padding: 20px;
+    border-radius: 10px;
+    width: 100%;
+    max-width: 400px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.5);
+}
+
+/* Yazý renkleri ve form kenarlýklarý */
+.text-warning {
+    color: #ffc107 !important;
+}
+
+.form-control-lg {
+    font-size: 1.25rem;
+}
+
+.border-warning {
+    border: 2px solid #ffc107 !important;
+}
+
+/* Düðme düzeni */
+.btn-warning {
+    background-color: #ffc107;
+    border: none;
+    color: black;
+}
+
+.btn-warning:hover {
+    background-color: #e0a800;
+    color: white;
+}
+.table th {
+    background-color: #ffc107; /* Turuncu arka plan */
+    color: #000; /* Siyah yazý rengi */
+    text-align: center; /* Baþlýklarý ortala */
+    font-weight: bold; /* Kalýn yazý */
+    padding: 10px; /* Boþluk ekle */
+    border-bottom: 2px solid #000; /* Siyah alt çizgi */
+}
+
+.table td {
+    color: #fff; /* Beyaz yazý rengi */
+    text-align: center; /* Hücreleri ortala */
+    padding: 10px; /* Hücreler için boþluk */
+}
+.carousel-container {
+    position: relative;
+    width: 100%;
+    max-width: 800px;
+    margin: 0 auto;
+    overflow: hidden;
+}
+
+.carousel {
+    display: flex;
+    align-items: center;
+}
+
+.carousel-images {
+    display: flex;
+    transition: transform 0.5s ease-in-out;
+}
+
+    .carousel-images img {
+        width: 100%;
+        height: auto;
+        object-fit: cover;
+        flex-shrink: 0;
+    }
+
+.carousel-button {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: rgba(0, 0, 0, 0.5);
+    color: white;
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+    z-index: 1000;
+}
+
+    .carousel-button.prev {
+        left: 10px;
+    }
+
+    .carousel-button.next {
+        right: 10px;
+    }
+
+body {
+    overflow-y: auto; /* Aþaðý kaydýrmayý etkinleþtirir */
+}
+/* Uzman Kuaförler baþlýðý için stil */
+.baslik {
+    font-size: 24px; /* Font boyutu artýrýldý */
+    color: #000000; /* Siyah yazý rengi seçildi */
+    background-color: rgba(255, 255, 255, 0.8); /* Opak beyaz arka plan */
+    padding: 5px; /* Baþlýk çevresine boþluk ekleme */
+    text-align: center; /* Ortalanmýþ yazý */
+    border-radius: 5px; /* Köþeleri yuvarlatma */
+}
+.randevu-al-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin: 20px auto;
+    width: 90%;
+}
+
+.randevu-form {
+    width: 60%;
+    background-color: rgba(255, 255, 255, 0.9);
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.islemler-tablosu {
+    width: 35%;
+    background-color: rgba(255, 255, 255, 0.9);
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+    .islemler-tablosu h3 {
+        text-align: center;
+        margin-bottom: 10px;
+    }
+
+table {
+    width: 100%;
+    text-align: left;
+    border-collapse: collapse;
+}
+
+    table th,
+    table td {
+        padding: 10px;
+        border-bottom: 1px solid #ddd;
+    }
+
+    table th {
+        background-color: #ffcc00;
+        color: #000;
+    }
+
+    table td {
+        color: #333;
+    }

@@ -1,0 +1,85 @@
+﻿@{
+    ViewData["Title"] = "Admin Paneli";
+}
+
+<div class="container-fluid admin-panel">
+    <div class="row">
+        <!-- Sol Menü -->
+        <div class="col-md-3 side-menu">
+            <h2>Admin Paneli</h2>
+            <ul class="nav flex-column">
+                <li class="nav-item">
+                    <a class="nav-link" asp-area="" asp-controller="Admin" asp-action="KuaforYonetimi">Kuaför Yönetimi</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" asp-area="" asp-controller="Admin" asp-action="IslemYonetimi">İşlem Yönetimi</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" asp-area="" asp-controller="Admin" asp-action="RandevuYonetimi">Randevu Yönetimi</a>
+                </li>
+            </ul>
+            <a asp-action="Cikis" class="btn btn-danger mt-3">Çıkış Yap</a>
+        </div>
+
+        <!-- İçerik Alanı -->
+        <div class="col-md-9 content-area">
+            <h3>Hoş Geldiniz, Admin!</h3>
+            <p>Buradan tüm sistem yönetimini gerçekleştirebilirsiniz.</p>
+        </div>
+    </div>
+</div>
+
+@section Styles {
+    <style>
+        /* Genel Admin Panel Stilleri */
+        .admin-panel {
+            background-color: #f8f9fa;
+            min-height: 100vh;
+            padding: 20px 0;
+        }
+
+        /* Sol Menü */
+        .side-menu {
+            background-color: #343a40;
+            color: #ffffff;
+            padding: 20px;
+            min-height: 100vh;
+        }
+
+        .side-menu h2 {
+            color: #ffc107;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .side-menu .nav-link {
+            color: #ffffff;
+            font-size: 18px;
+            padding: 10px 15px;
+            border-radius: 5px;
+            display: block;
+            margin-bottom: 10px;
+            text-decoration: none;
+        }
+
+        .side-menu .nav-link:hover {
+            background-color: #ffc107;
+            color: #000;
+        }
+
+        /* İçerik Alanı */
+        .content-area {
+            background-color: #ffffff;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            padding: 30px;
+            margin: 20px;
+            color: #000;
+        }
+
+        .content-area h3 {
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+    </style>
+}

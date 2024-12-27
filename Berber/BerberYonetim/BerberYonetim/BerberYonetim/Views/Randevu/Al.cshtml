@@ -1,0 +1,116 @@
+﻿@model BerberYonetim.Models.Randevu
+
+@{
+    ViewData["Title"] = "Randevu Al";
+}
+
+<div class="container d-flex justify-content-between align-items-start mt-5">
+    <!-- Form Kapsayıcı -->
+    <div class="form-container me-5" style="width: 60%;">
+        <h2 class="text-warning text-center mb-4">Randevu Al</h2>
+
+        @if (TempData["Basari"] != null)
+        {
+            <div class="alert alert-success">@TempData["Basari"]</div>
+        }
+
+        @if (ViewData.ModelState.ErrorCount > 0)
+        {
+            <div class="alert alert-danger">
+                @foreach (var error in ViewData.ModelState.Values.SelectMany(v => v.Errors))
+                {
+                    <p>@error.ErrorMessage</p>
+                }
+            </div>
+        }
+
+        <form asp-action="Al" method="post">
+            <div class="form-group mb-3">
+                <label for="IslemId" class="form-label">İşlem</label>
+                <select asp-for="IslemId" class="form-control" asp-items="ViewBag.Islemler">
+                    <option value="">İşlem Seçiniz</option>
+                </select>
+                <span asp-validation-for="IslemId" class="text-danger"></span>
+            </div>
+
+            <div id="uzmanKuaforler" class="mt-3">
+                <!-- Uzman kuaförler burada yüklenecek -->
+            </div>
+
+            <div id="tarihSaatSecimi" class="mt-3" style="display:none;">
+                <div class="form-group mb-3">
+                    <label for="Tarih" class="form-label">Randevu Tarihi</label>
+                    <input asp-for="Tarih" type="date" class="form-control" />
+                    <span asp-validation-for="Tarih" class="text-danger"></span>
+                </div>
+
+                <div class="form-group mb-3">
+                    <label for="Saat" class="form-label">Randevu Saati</label>
+                    <select asp-for="Saat" class="form-control">
+                        <option value="">Saat Seçiniz</option>
+                        @foreach (var saat in ViewBag.Saatler)
+                        {
+                            <option value="@saat">@saat</option>
+                        }
+                    </select>
+                    <span asp-validation-for="Saat" class="text-danger"></span>
+                </div>
+                <button type="submit" class="btn btn-warning w-100">Randevu Al</button>
+            </div>
+        </form>
+    </div>
+
+    <!-- İşlem Ücretleri Tablosu -->
+    <div class="table-container" style="width: 40%;">
+        <h2 class="text-warning text-center mb-4">İşlemler ve Ücretler</h2>
+        <table class="table table-bordered table-striped table-dark">
+            <thead>
+                <tr>
+                    <th>İşlem</th>
+                    <th>Ücret</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Saç Kesimi</td>
+                    <td>350 TL</td>
+                </tr>
+                <tr>
+                    <td>Saç Boyama</td>
+                    <td>750 TL</td>
+                </tr>
+                <tr>
+                    <td>Sakal Tıraşı</td>
+                    <td>200 TL</td>
+                </tr>
+                <tr>
+                    <td>Bakım ve Maske</td>
+                    <td>400 TL</td>
+                </tr>
+                <tr>
+                    <td>Keratin Bakımı</td>
+                    <td>550 TL</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+@section Scripts {
+    <script>
+        $(document).ready(function () {
+            $('#IslemId').change(function () {
+                var islemId = $(this).val();
+                if (islemId) {
+                    $.post('/Randevu/UzmanlariGetir', { islemId: islemId }, function (data) {
+                        $('#uzmanKuaforler').html(data);
+                        $('#tarihSaatSecimi').fadeIn();
+                    });
+                } else {
+                    $('#uzmanKuaforler').html('');
+                    $('#tarihSaatSecimi').fadeOut();
+                }
+            });
+        });
+    </script>
+}
