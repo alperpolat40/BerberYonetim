@@ -1,6 +1,7 @@
 using BerberYonetim.Data;
 using BerberYonetim.Models;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.Authentication.Cookies;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -16,6 +17,15 @@ builder.Services.AddSession(options =>
     options.Cookie.HttpOnly = true; // Cookie'nin yalnýzca HTTP üzerinden eriþilebilir olmasý
     options.Cookie.IsEssential = true; // Cookie'nin zorunlu olduðunu belirtir
 });
+
+// Authentication servisini ekle
+builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
+    .AddCookie(options =>
+    {
+        options.LoginPath = "/Admin/Giris"; // Yetkisiz eriþimde yönlendirme
+        options.LogoutPath = "/Admin/Cikis"; // Çýkýþ iþlemi
+        options.AccessDeniedPath = "/Admin/Giris"; // Yetki reddinde yönlendirme
+    });
 
 // MVC desteðini ekle
 builder.Services.AddControllersWithViews();
@@ -33,15 +43,13 @@ if (!app.Environment.IsDevelopment())
 app.UseHttpsRedirection();
 app.UseStaticFiles();
 app.UseRouting();
+app.UseAuthentication(); // Authentication middleware
+app.UseAuthorization(); // Authorization middleware
 app.UseSession(); // Oturum desteðini etkinleþtir
-app.UseAuthorization();
 
 // Varsayýlan rota
 app.MapControllerRoute(
     name: "default",
     pattern: "{controller=Home}/{action=Index}/{id?}");
-
-// Veritabanýný baþlangýç verileriyle doldur
-
 
 app.Run();
