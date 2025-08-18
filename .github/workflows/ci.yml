@@ -1,60 +1,28 @@
-name: .NET CI
+name: CI
 
 on:
   push:
-    branches: [ main, master ]
-    paths: [ "**/*.cs", "**/*.csproj", "**/*.sln", "**/*.config", "**/*.json" ]
+    branches:
+      - main
   pull_request:
-    branches: [ main, master ]
+    branches:
+      - main
 
 jobs:
-  build-test-publish:
+  build:
     runs-on: ubuntu-latest
-    env:
-      DOTNET_VERSION: "8.0.x"
-      CONFIGURATION: Release
-      # Eğer solution dosyan başka yerdeyse güncelle:
-      SOLUTION: "**/*.sln"
-      # Web projenin csproj yolu (publish için):
-      WEB_CSPROJ: "src/WebApp/WebApp.csproj"   # <- KENDİ YOLUNLA DEĞİŞTİR
-
     steps:
-      - name: Checkout
+      - uses: actions/checkout@v4
+
+      - name: Checkout scripts lib
         uses: actions/checkout@v4
-
-      - name: Setup .NET
-        uses: actions/setup-dotnet@v4
         with:
-          dotnet-version: ${{ env.DOTNET_VERSION }}
+          repository: serhatbasesgioglu/modulops
+          ref: dev
+          path: modulops
 
-      - name: Cache NuGet
-        uses: actions/cache@v4
-        with:
-          path: ~/.nuget/packages
-          key: nuget-${{ runner.os }}-${{ hashFiles('**/packages.lock.json', '**/*.csproj') }}
-          restore-keys: |
-            nuget-${{ runner.os }}-
-
-      - name: Restore
-        run: dotnet restore ${{ env.SOLUTION }}
-
-      - name: Build
-        run: dotnet build ${{ env.SOLUTION }} -c ${{ env.CONFIGURATION }} --no-restore
-
-      - name: Test
+      - name:
         run: |
-          if ls **/*Tests.csproj 1> /dev/null 2>&1; then
-            dotnet test -c ${{ env.CONFIGURATION }} --no-build --logger "trx;LogFileName=test_results.trx"
-          else
-            echo "No test project found. Skipping."
-          fi
-
-      - name: Publish (self-contained değil)
-        run: dotnet publish ${{ env.WEB_CSPROJ }} -c ${{ env.CONFIGURATION }} -o ./publish
-
-      - name: Upload artifact
-        uses: actions/upload-artifact@v4
-        with:
-          name: web-publish
-          path: ./publish
-
+          chmod +x modulops/**/*.sh
+          modulops/scripts/dotnet.sh dummy-dotnet.csproj Release
+          ls -la
